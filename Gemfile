@@ -13,7 +13,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'debugger'
+#gem 'debugger'
 
 gem 'mysql2'
 
