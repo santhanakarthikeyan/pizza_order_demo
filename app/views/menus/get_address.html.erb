@@ -1,0 +1,15 @@
+<span>User Name</span><%=@user.email%>
+
+<%= form_tag({:controller => "menus", :action => "update_address", :id => @user.id}, :multipart => true) do %>
+  <div class="field">
+    <%= label_tag "User Name"%><br />
+    <%= text_field_tag :name, @user.email, :disabled => true %>
+  </div>
+  <div class="field">
+    <%= label_tag "Address"%><br />
+    <%= text_field_tag :addr%>
+  </div>
+<%= submit_tag 'Submit', :class=> "btn" %>
+ <% end %>
+
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pizza</title>
+	<link rel="stylesheet" href="//railsgirls.com/assets/bootstrap.css">
+	<link rel="stylesheet" href="//railsgirls.com/assets/bootstrap-theme.css">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  
+  <script type="text/javascript">
+	  function altRows(id){
+		  if(document.getElementsByTagName){ 
+			  
+			  var table = document.getElementById(id);  
+			  var rows = table.getElementsByTagName("tr");
+			  
+			  for(i = 0; i < rows.length; i++){          
+				  if(i % 2 == 0){
+					  rows[i].className = "evenrowcolor";
+				  }else{
+					  rows[i].className = "oddrowcolor";
+				  }      
+			  }
+		  }
+	  }
+window.onload=function(){
+	altRows('alternatecolor');
+}
+</script>
+
+<style type="text/css">
+	table.altrowstable {
+		font-family: verdana,arial,sans-serif;
+		font-size:11px;
+		color:#333333;
+		border-width: 1px;
+		border-color: #a9c6c9;
+		border-collapse: collapse;
+		}
+	table.altrowstable th {
+		border-width: 1px;
+		padding: 8px;
+		border-style: solid;
+		border-color: #a9c6c9;
+	}
+	table.altrowstable td {
+		border-width: 1px;
+		padding: 8px;
+		border-style: solid;
+		border-color: #a9c6c9;
+       	}
+	.oddrowcolor{
+		background-color:#d4e3e5;
+		}
+	.evenrowcolor{
+	       	background-color:#c3dde0;
+		}
+</style>
+
+				
+	</head>
+	<body>
+        	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+						<div class="container">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								       	<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/menus">Pizza Online Order</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="inactive"><a href="/menus">Pizzas</a></li>
+			</ul>
+			<ul class="nav navbar-nav">
+				<%if session[:order_ids].nil?%>
+						<li class="inactive"><a href="/menus/checkout">Checkout</a></li>
+					<%else%>
+						<li class="inactive"><a href="/menus/checkout">Checkout (<%=session[:order_ids].size%>)</a></li>
+					<%end%>
+			</ul>
+			<ul class="nav navbar-nav">
+			<%if user_signed_in?%>
+				<li class="inactive"><a href="/sign_out">Logout</a></li>
+			<%else%>
+				<li class="inactive"><a href="/sign_in">Login</a></li>
+			<%end%>
+			</ul>
+	</div>
+</div>
+</nav>
+<div class="container">
+	       <p id="notice"><%= notice %></p>
+	              <p id="alert"><%= alert %></p>
+	<%= yield %>
+</div>
+<script src="//railsgirls.com/assets/bootstrap.js"></script>
+
+</body>
+
+</html>

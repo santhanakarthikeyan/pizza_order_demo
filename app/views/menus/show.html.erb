@@ -1,0 +1,46 @@
+<table style="width:80%;height:60px">
+	<tr>
+		<th>
+			Name
+		</th>
+		<td>:</td>
+		<td>
+			<%= @menu.name %>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Description
+		</th>
+		<td>:</td>
+		<td>
+			<%= @menu.description %>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Image
+		</th>
+		<td>:</td>
+		<td>
+			<%filename = "pizza_#{rand(999)}"%>
+			<%File.open("#{Rails.root}/app/assets/images/#{filename}", 'wb') do|f|
+				f.write(@menu.image)
+			end%>
+		       	<%= image_tag("#{filename}",:width => "160")%>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Price
+		</th>
+		<td>:</td>
+		<td>
+			<%= @menu.price%>
+		</td>
+	</tr>
+</table>
+</br>
+</br>
+<%= link_to 'Edit', edit_menu_path(@menu) %> |
+<%= link_to 'Menu', menus_path %>
