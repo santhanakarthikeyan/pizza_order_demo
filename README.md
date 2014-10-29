@@ -1,4 +1,4 @@
 pizza_order_demo
 ================
 
-pizza online order demo project devloped using ROR
+pizza online order is a demo project devloped using ROR
